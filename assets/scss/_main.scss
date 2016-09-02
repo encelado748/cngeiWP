@@ -61,6 +61,16 @@ HEADER STYLES
 	.top-bar{
 		background: $topbar-main-background;
 		background-size: cover;
+
+		position:relative;
+		width: 100%;
+
+		&:after {
+				content:"";
+				display:block;
+				padding-top: 26%;
+		}
+
 		a {
 			color: $topbar-font-color;
 		}
@@ -507,6 +517,10 @@ FOOTER STYLES
 .footer {
 	clear: both;
 	margin-top: 1em;
+	padding-top: 1em;
+	background-color: $primary-color;
+	color: $white;
+	text-align: center;
 }
 
 /*********************

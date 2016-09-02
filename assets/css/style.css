@@ -3923,7 +3923,13 @@ HEADER STYLES
 
 .header .top-bar {
   background: #8a8a8a url(../images/header-main-large.jpg) no-repeat center center;
-  background-size: cover; }
+  background-size: cover;
+  position: relative;
+  width: 100%; }
+  .header .top-bar:after {
+    content: "";
+    display: block;
+    padding-top: 26%; }
   .header .top-bar a {
     color: #fefefe; }
 
@@ -4154,7 +4160,11 @@ FOOTER STYLES
 *********************/
 .footer {
   clear: both;
-  margin-top: 1em; }
+  margin-top: 1em;
+  padding-top: 1em;
+  background-color: #237350;
+  color: #fefefe;
+  text-align: center; }
 
 /*********************
 FOUNDATION STYLES
