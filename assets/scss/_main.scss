@@ -55,6 +55,8 @@ h5, .h5 {
 HEADER STYLES
 *********************/
 .header {
+	position:relative;
+
 	ul.off-canvas-list li {
 		list-style: none;
 	}
@@ -73,6 +75,42 @@ HEADER STYLES
 
 		a {
 			color: $topbar-font-color;
+		}
+	}
+	.header-button{
+		position: absolute;
+		bottom:0;
+		margin-left: auto;
+		margin-right: auto;
+		left: 0;
+		right: 0;
+		.button{
+			@include breakpoint(small) {
+				font-size: map-get($button-sizes,small);
+			}
+			@include breakpoint(medium) {
+				font-size: map-get($button-sizes,default);
+			}
+			@include breakpoint(large) {
+				font-size: map-get($button-sizes,large);
+			}
+		}
+		.description {
+			color: $white;
+			text-align: center;
+			margin-bottom: 1em;
+			@include breakpoint(medium) {
+				font-size: 0.8em;
+			}
+			@include breakpoint(large) {
+				font-size: 1em;
+			}
+		}
+		#menu-header{
+			margin-left: 0;
+		}
+		a {
+			color: $white;
 		}
 	}
 }

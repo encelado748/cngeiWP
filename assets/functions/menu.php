@@ -3,7 +3,8 @@
 register_nav_menus(
 	array(
 		'main-nav' => __( 'The Main Menu', 'jointswp' ),   // Main nav in header
-		'footer-links' => __( 'Footer Links', 'jointswp' ) // Secondary nav in footer
+		'footer-links' => __( 'Footer Links', 'jointswp' ), // Secondary nav in footer
+		'header-links' => __('Header Links', 'jointswp') // Menus in header
 	)
 );
 
@@ -45,6 +46,36 @@ class Off_Canvas_Menu_Walker extends Walker_Nav_Menu {
     function start_lvl(&$output, $depth = 0, $args = Array() ) {
         $indent = str_repeat("\t", $depth);
         $output .= "\n$indent<ul class=\"vertical menu nested\">\n";
+    }
+}
+
+
+// The Header Link menu
+function joints_header_links() {
+	 wp_nav_menu(array(
+        'container' => false,                           // Remove nav container
+        'menu_class' => 'button-group radius text-center',       // Adding custom nav class
+        'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+        'theme_location' => 'header-links',        			// Where it's located in the theme
+        'depth' => 0,                                   // Limit the depth of the nav
+        'fallback_cb' => false,                         // Fallback function (see below)
+				'walker' => new Header_Link_Menu_Walker()
+    ));
+}
+
+class Header_Link_Menu_Walker extends Walker_Nav_Menu {
+    function start_el(&$output, $item, $depth = 0, $args = Array(), $current_object_id = 0) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<li class=\"button\">\n";
+				$item_output = '<a href="' . $item->url . '">' . $item->title . '</a> ';
+				// Since $output is called by reference we don't need to return anything.
+				$output .= apply_filters(
+						'walker_nav_menu_start_el'
+				,   $item_output
+				,   $item
+				,   $depth
+				,   $args
+				);
     }
 }
 
