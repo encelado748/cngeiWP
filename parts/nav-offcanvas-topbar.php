@@ -17,7 +17,7 @@
 		</ul>
 	</div>
 </div>
-<div class=header-button>
-	<div class="description show-for-medium"><?php bloginfo('description'); ?></div>
+<div class=header-buttons>
+	<div class="description show-for-medium"><p><?php bloginfo('description'); ?></p></div>
 	<?php joints_header_links(); ?>
 </div>

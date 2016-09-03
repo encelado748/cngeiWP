@@ -3,9 +3,14 @@ Stylesheet: Header Variables
 ******************************************************************/
 
 $topbar-font-color: $white;
+$topbar-height-ratio: 18%;
+$topbar-h1-margin: (
+  small: 0.5rem,
+  medium: 0.8rem
+);
 $topbar-logo-margin: (
   small: 0.1rem,
-  medium: 0.4rem,
+  medium: 0.4rem
 );
 $topbar-menu-icon: (
   small: (

@@ -6,6 +6,17 @@ Stylesheet: Header
 
 //= Header Functions ==============================================
 
+// Topbar Structure
+@mixin TopbarHeightRatio($height){
+	position:relative;
+	width: 100%;
+	&:after {
+			content:"";
+			display:block;
+			padding-top: $height;
+	}
+}
+
 // Topbar Logo
 @function getTopbarLogoSize($size) {
 	@return rem-calc(map-get(map-get($header-sizes,$size),h1) * $header-lineheight) - map-get($topbar-logo-margin,$size) * 2;
@@ -17,6 +28,13 @@ Stylesheet: Header
 	margin: getTopbarLogoMargin($size);
 	width: getTopbarLogoSize($size);
 	height: getTopbarLogoSize($size);
+	display: inline-block;
+	vertical-align: middle;
+}
+@mixin TopbarHeader($size){
+	margin: 0 map-get($topbar-h1-margin,$size);
+	display: inline-block;
+	vertical-align: middle;
 }
 
 // Topbar Right Menu
@@ -45,70 +63,63 @@ Stylesheet: Header
 
 .header {
 	position: relative;
-	.top-bar-left{
-		img {
-			@include TopbarLogo(small);
-			@include breakpoint(medium) {
-				@include TopbarLogo(medium);
-			}
-		}
+
+	// Header Text
+	a, p, h1
+	{
+		color: $topbar-font-color;
 	}
 
-	.top-bar-right{
-		ul {line-height: 1;}
-		padding: getTopbarRightPadding(small, getTopbarMenuIconHeight(small));
-		@include breakpoint(medium) {
-			padding: getTopbarRightPadding(medium, getTopbarMenuIconHeight(medium));
-		}
-		@include breakpoint(large) {
-			padding: getTopbarRightPadding(medium, getTopbarMenuHeight());
-		}
-
-		.responsive-menu-icon {
-			@include TopbarMenuIcon(small);
-			@include breakpoint(medium) {
-				@include TopbarMenuIcon(medium);
-			}
-		}
-	}
-
-
-
-	h1{
-		margin: 0 0.5rem 0 0.5rem;
-	}
-	img, h1 {
-		display: inline-block;
-		vertical-align: middle;
-	}
-
-	ul.off-canvas-list li {
-		list-style: none;
-	}
+// Topbar
 	.top-bar{
 		background: $topbar-main-background;
 		background-size: cover;
 
-		position:relative;
-		width: 100%;
+		@include TopbarHeightRatio($topbar-height-ratio);
 
-		&:after {
-				content:"";
-				display:block;
-				padding-top: 18%;
+		.top-bar-left{
+			img {
+				@include TopbarLogo(small);
+				@include breakpoint(medium) {
+					@include TopbarLogo(medium);
+				}
+			}
+
+			h1{
+				@include TopbarHeader(small);
+				@include breakpoint(medium) {
+					@include TopbarHeader(medium);
+				}
+			}
 		}
 
-		a {
-			color: $topbar-font-color;
+		.top-bar-right{
+			ul {line-height: 1;}
+			padding: getTopbarRightPadding(small, getTopbarMenuIconHeight(small));
+			@include breakpoint(medium) {
+				padding: getTopbarRightPadding(medium, getTopbarMenuIconHeight(medium));
+			}
+			@include breakpoint(large) {
+				padding: getTopbarRightPadding(medium, getTopbarMenuHeight());
+			}
+
+			.responsive-menu-icon {
+				@include TopbarMenuIcon(small);
+				@include breakpoint(medium) {
+					@include TopbarMenuIcon(medium);
+				}
+			}
 		}
 	}
-	.header-button{
+
+	.header-buttons{
 		position: absolute;
 		bottom:0;
 		margin-left: auto;
 		margin-right: auto;
 		left: 0;
 		right: 0;
+
 		.button{
 			@include breakpoint(small) {
 				font-size: map-get($button-sizes,small);
@@ -121,21 +132,21 @@ Stylesheet: Header
 			}
 		}
 		.description {
-			color: $white;
 			text-align: center;
-			margin-bottom: 1em;
 			@include breakpoint(medium) {
-				font-size: 0.8em;
+				font-size: map-get($button-sizes,default);
 			}
 			@include breakpoint(large) {
-				font-size: 1em;
+				font-size: map-get($button-sizes,large);
 			}
 		}
-		#menu-header{
+
+		ul {
 			margin-left: 0;
 		}
-		a {
-			color: $white;
-		}
+	}
+
+	ul.off-canvas-list li {
+		list-style: none;
 	}
 }
