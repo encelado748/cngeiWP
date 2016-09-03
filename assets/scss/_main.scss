@@ -58,14 +58,23 @@ HEADER STYLES
 	position: relative;
 	.top-bar-right{
 		$topbar-right-menu-height: 1rem + nth($menu-item-padding,1) * 2;
-		$topbar-right-padding: ( $topbar-logo-margin * 2 + $topbar-logo_size - $topbar-right-menu-height ) / 2;
+		$topbar-right-padding: ( map-get($topbar-logo-margin,small) * 2 + map-get($topbar-logo_size,small) - $topbar-right-menu-height ) / 2;
 		padding: $topbar-right-padding 0;
+		@include breakpoint(medium) {
+			$topbar-right-padding: ( map-get($topbar-logo-margin,medium) * 2 + map-get($topbar-logo_size,medium) - $topbar-right-menu-height ) / 2;
+			padding: $topbar-right-padding 0;
+		}
 	}
 
 	img {
-		margin: $topbar-logo-margin;
-		width: $topbar-logo_size;
-		height: $topbar-logo_size;
+		margin: map-get($topbar-logo-margin,small);
+		width: map-get($topbar-logo_size,small);
+		height: map-get($topbar-logo_size,small);
+		@include breakpoint(medium) {
+			margin: map-get($topbar-logo-margin,medium);
+			width: map-get($topbar-logo_size,medium);
+			height: map-get($topbar-logo_size,medium);
+		}
 	}
 
 	h1{

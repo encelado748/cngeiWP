@@ -3921,11 +3921,19 @@ HEADER STYLES
 .header {
   position: relative; }
   .header .top-bar-right {
-    padding: 0.9rem 0; }
+    padding: -0.15rem 0; }
+    @media screen and (min-width: 40em) {
+      .header .top-bar-right {
+        padding: 0.9rem 0; } }
   .header img {
-    margin: 0.5rem;
-    width: 3.2rem;
-    height: 3.2rem; }
+    margin: 0.1rem;
+    width: 1.9rem;
+    height: 1.9rem; }
+    @media screen and (min-width: 40em) {
+      .header img {
+        margin: 0.4rem;
+        width: 3.4rem;
+        height: 3.4rem; } }
   .header h1 {
     margin: 0 0.5rem 0 0.5rem; }
   .header img, .header h1 {
