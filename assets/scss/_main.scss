@@ -55,7 +55,26 @@ h5, .h5 {
 HEADER STYLES
 *********************/
 .header {
-	position:relative;
+	position: relative;
+	.top-bar-right{
+		$topbar-right-menu-height: 1rem + nft($menu-item-padding,1) * 2;
+		$topbar-right-padding: ( $topbar-logo-margin * 2 + $topbar-logo_size - $topbar-right-menu-height ) / 2;
+		padding: $topbar-right-padding 0;
+	}
+
+	img {
+		margin: $topbar-logo-margin;
+		width: $topbar-logo_size;
+		height: $topbar-logo_size;
+	}
+
+	h1{
+		margin: 0 0.5rem 0 0.5rem;
+	}
+	img, h1 {
+		display: inline-block;
+		vertical-align: middle;
+	}
 
 	ul.off-canvas-list li {
 		list-style: none;

@@ -4,7 +4,7 @@
 <div class="top-bar" id="top-bar-menu">
 	<div class="top-bar-left float-left">
 		<ul class="menu">
-			<li><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></li>
+			<li><img src="<?php echo get_bloginfo('template_directory');?>/assets/images/logo.svg"><h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1></li>
 		</ul>
 	</div>
 	<div class="top-bar-right show-for-medium">
