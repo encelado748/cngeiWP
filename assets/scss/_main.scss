@@ -77,6 +77,32 @@ HEADER STYLES
 		}
 	}
 
+	.responsive-menu-icon {
+		$menu-icon-height: 0.8px * map-get(map-get($header-sizes,small),h1);
+		$menu-icon-weight: $menu-icon-height / 8;
+		$menu-icon-width: $menu-icon-height * 1.3;
+		@include hamburger(
+			$color: $titlebar-icon-color,
+			$color-hover: $titlebar-icon-color-hover,
+			$width: $menu-icon-width,
+			$height: $menu-icon-height,
+			$weight: $menu-icon-weight
+		);
+		@include breakpoint(medium) {
+			$menu-icon-height: 0.7px * map-get(map-get($header-sizes,medium),h1);
+			$menu-icon-weight: $menu-icon-height / 8;
+			$menu-icon-width: $menu-icon-height * 1.3;
+			@include hamburger(
+				$color: $titlebar-icon-color,
+				$color-hover: $titlebar-icon-color-hover,
+				$width: $menu-icon-width,
+				$height: $menu-icon-height,
+				$weight: $menu-icon-weight
+			);
+		}
+
+  }
+
 	h1{
 		margin: 0 0.5rem 0 0.5rem;
 	}
@@ -98,7 +124,7 @@ HEADER STYLES
 		&:after {
 				content:"";
 				display:block;
-				padding-top: 26%;
+				padding-top: 18%;
 		}
 
 		a {
