@@ -566,5 +566,5 @@ $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: small;
 $topbar-main-background: $dark-gray url(../images/header-main-large.jpg) no-repeat center center;
 $topbar-font-color: $white;
-$topbar-logo-size: 3rem;
 $topbar-logo-margin: 0.5rem;
+$topbar-logo-size: rem-calc(map-get(map-get($header-sizes,medium),h1)) * $header-lineheight - $topbar-logo-margin * 2;

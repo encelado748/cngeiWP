@@ -57,7 +57,7 @@ HEADER STYLES
 .header {
 	position: relative;
 	.top-bar-right{
-		$topbar-right-menu-height: 1rem + nft($menu-item-padding,1) * 2;
+		$topbar-right-menu-height: 1rem + nth($menu-item-padding,1) * 2;
 		$topbar-right-padding: ( $topbar-logo-margin * 2 + $topbar-logo_size - $topbar-right-menu-height ) / 2;
 		padding: $topbar-right-padding 0;
 	}
