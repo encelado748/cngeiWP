@@ -1,0 +1,130 @@
+/******************************************************************
+Stylesheet: Header
+******************************************************************/
+
+@import '../variables/header-var';
+
+//= Header Functions ==============================================
+
+// Topbar Logo
+@function getTopbarLogoSize($size) {
+	@return rem-calc(map-get(map-get($header-sizes,$size),h1)) * $header-lineheight - map-get($topbar-logo-margin,$size) * 2;
+}
+@function getTopbarLogoMargin($size){
+	@return map-get($topbar-logo-margin,$size);
+}
+@mixin TopbarLogo($size){
+	margin: getTopbarLogoMargin($size);
+	width: getTopbarLogoSize($size);
+	height: getTopbarLogoSize($size);
+}
+
+// Topbar Right Menu
+@function getTopbarRightPadding($size){
+	$topbar-right-menu-height: 1rem + nth($menu-item-padding,1) * 2;
+	@return ( getTopbarLogoMargin($size) * 2 + getTopbarLogoSize($size) - $topbar-right-menu-height ) / 2;
+}
+
+// Topbar Menu Icon
+@mixin TopbarMenuIcon($size){
+	@include hamburger(
+		$color: $titlebar-icon-color,
+		$color-hover: $titlebar-icon-color-hover,
+		$width: map-get(map-get($topbar-menu-icon,$size),width),
+		$height: map-get(map-get($topbar-menu-icon,$size),height),
+		$weight: map-get(map-get($topbar-menu-icon,$size),weight)
+	);
+}
+
+//= Header Classes ================================================
+
+.header {
+	position: relative;
+	
+	.top-bar-right{
+		padding: getTopbarRightPadding(small);
+		@include breakpoint(medium) {
+			padding: getTopbarRightPadding(medium);
+		}
+	}
+
+	img {
+		@include TopbarLogo(small);
+		@include breakpoint(medium) {
+			@include TopbarLogo(medium);
+		}
+	}
+
+	.responsive-menu-icon {
+		@include TopbarMenuIcon(small);
+		@include breakpoint(medium) {
+			@include TopbarMenuIcon(medium);
+		}
+
+  }
+
+	h1{
+		margin: 0 0.5rem 0 0.5rem;
+	}
+	img, h1 {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	ul.off-canvas-list li {
+		list-style: none;
+	}
+	.top-bar{
+		background: $topbar-main-background;
+		background-size: cover;
+
+		position:relative;
+		width: 100%;
+
+		&:after {
+				content:"";
+				display:block;
+				padding-top: 18%;
+		}
+
+		a {
+			color: $topbar-font-color;
+		}
+	}
+	.header-button{
+		position: absolute;
+		bottom:0;
+		margin-left: auto;
+		margin-right: auto;
+		left: 0;
+		right: 0;
+		.button{
+			@include breakpoint(small) {
+				font-size: map-get($button-sizes,small);
+			}
+			@include breakpoint(medium) {
+				font-size: map-get($button-sizes,default);
+			}
+			@include breakpoint(large) {
+				font-size: map-get($button-sizes,large);
+			}
+		}
+		.description {
+			color: $white;
+			text-align: center;
+			margin-bottom: 1em;
+			@include breakpoint(medium) {
+				font-size: 0.8em;
+			}
+			@include breakpoint(large) {
+				font-size: 1em;
+			}
+		}
+		#menu-header{
+			margin-left: 0;
+		}
+		a {
+			color: $white;
+		}
+	}
+}

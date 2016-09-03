@@ -1,0 +1,21 @@
+/******************************************************************
+Stylesheet: Header Variables
+******************************************************************/
+
+$topbar-font-color: $white;
+$topbar-logo-margin: (
+  small: 0.1rem,
+  medium: 0.4rem
+);
+$topbar-menu-icon: (
+  small: (
+    weight: 2px,
+    height: 18px,
+    width: 24px
+  ),
+  medium: (
+    weight:3px,
+    height: 24px,
+    width: 30px
+  )
+);
