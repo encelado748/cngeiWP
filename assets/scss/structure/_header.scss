@@ -8,7 +8,7 @@ Stylesheet: Header
 
 // Topbar Logo
 @function getTopbarLogoSize($size) {
-	@return rem-calc(map-get(map-get($header-sizes,$size),h1)) * $header-lineheight - map-get($topbar-logo-margin,$size) * 2;
+	@return rem-calc(map-get(map-get($header-sizes,$size),h1) * $header-lineheight) - map-get($topbar-logo-margin,$size) * 2;
 }
 @function getTopbarLogoMargin($size){
 	@return map-get($topbar-logo-margin,$size);
@@ -20,9 +20,14 @@ Stylesheet: Header
 }
 
 // Topbar Right Menu
-@function getTopbarRightPadding($size){
-	$topbar-right-menu-height: 1rem + nth($menu-item-padding,1) * 2;
-	@return ( getTopbarLogoMargin($size) * 2 + getTopbarLogoSize($size) - $topbar-right-menu-height ) / 2;
+@function getTopbarMenuHeight(){
+	@return 1rem + nth($menu-item-padding,1) * 2;
+}
+@function getTopbarMenuIconHeight($size){
+	@return rem-calc(map-get(map-get($topbar-menu-icon,$size),height));
+}
+@function getTopbarRightPadding($size, $content-height){
+	@return (getTopbarLogoMargin($size) * 2 + getTopbarLogoSize($size) - $content-height) / 2;
 }
 
 // Topbar Menu Icon
@@ -40,28 +45,34 @@ Stylesheet: Header
 
 .header {
 	position: relative;
-	
+	.top-bar-left{
+		img {
+			@include TopbarLogo(small);
+			@include breakpoint(medium) {
+				@include TopbarLogo(medium);
+			}
+		}
+	}
+
 	.top-bar-right{
-		padding: getTopbarRightPadding(small);
+		ul {line-height: 1;}
+		padding: getTopbarRightPadding(small, getTopbarMenuIconHeight(small));
 		@include breakpoint(medium) {
-			padding: getTopbarRightPadding(medium);
+			padding: getTopbarRightPadding(medium, getTopbarMenuIconHeight(medium));
+		}
+		@include breakpoint(large) {
+			padding: getTopbarRightPadding(medium, getTopbarMenuHeight());
+		}
+
+		.responsive-menu-icon {
+			@include TopbarMenuIcon(small);
+			@include breakpoint(medium) {
+				@include TopbarMenuIcon(medium);
+			}
 		}
 	}
 
-	img {
-		@include TopbarLogo(small);
-		@include breakpoint(medium) {
-			@include TopbarLogo(medium);
-		}
-	}
 
-	.responsive-menu-icon {
-		@include TopbarMenuIcon(small);
-		@include breakpoint(medium) {
-			@include TopbarMenuIcon(medium);
-		}
-
-  }
 
 	h1{
 		margin: 0 0.5rem 0 0.5rem;
