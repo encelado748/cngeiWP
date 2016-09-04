@@ -13,15 +13,12 @@ Stylesheet: Content
   padding-top: 1.5em;
 }
 
-article {
+
+main > article{
   margin: 0.5rem 0 2rem 0;
   background-color: $white;
   @include addShadowBox(darken(#e2dbc2,40%));
   .article-header{
-
-    > a {
-
-    }
     > h2, > h1 {
       padding: 0.8rem;
       background-color: $primary-color;
@@ -48,5 +45,8 @@ article {
   div {
     padding-bottom: 2em;
   }
+}
 
+.comments-area {
+  padding: 4rem 1rem 1rem 1rem;
 }

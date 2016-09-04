@@ -3920,26 +3920,29 @@ Stylesheet: Content Variables
   background-color: #e2dbc2;
   padding-top: 1.5em; }
 
-article {
+main > article {
   margin: 0.5rem 0 2rem 0;
   background-color: #fefefe;
   box-shadow: 0px 0px 5px 2px #928246; }
-  article .article-header > h2, article .article-header > h1 {
+  main > article .article-header > h2, main > article .article-header > h1 {
     padding: 0.8rem;
     background-color: #237350;
     color: #fefefe; }
-    article .article-header > h2 > a, article .article-header > h1 > a {
+    main > article .article-header > h2 > a, main > article .article-header > h1 > a {
       color: #fefefe; }
-  article .entry-content {
+  main > article .entry-content {
     padding: 0 0.8rem; }
-    article .entry-content .byline {
+    main > article .entry-content .byline {
       font-size: 0.7rem;
       text-align: right; }
-  article .article-footer {
+  main > article .article-footer {
     padding: 0.8rem; }
 
 .sidebar div {
   padding-bottom: 2em; }
+
+.comments-area {
+  padding: 4rem 1rem 1rem 1rem; }
 
 /*********************
 LINK STYLES
