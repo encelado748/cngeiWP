@@ -1,0 +1,49 @@
+/******************************************************************
+Stylesheet: Content
+******************************************************************/
+
+@import '../variables/content-var';
+
+//= Content Functions =============================================
+
+//= Content Classes ===============================================
+
+#content {
+  background-color: #e2dbc2;
+  padding-top: 1.5em;
+}
+
+article {
+  margin: 0.5rem 0 2rem 0;
+  background-color: $white;
+  @include addShadowBox(darken(#e2dbc2,40%));
+  .article-header{
+
+    > a {
+
+    }
+    > h2, > h1 {
+      padding: 0.8rem;
+      background-color: $primary-color;
+      color:$white;
+      > a {color:$white;}
+    }
+  }
+  .entry-content{
+    padding: 0 0.8rem;
+    .byline{
+      font-size:0.7rem;
+      text-align: right;
+    }
+  }
+  .article-footer{
+    padding: 0.8rem;
+    .tags{
+
+    }
+  }
+}
+
+.sidebar{
+
+}

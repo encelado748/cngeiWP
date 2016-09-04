@@ -1,0 +1,8 @@
+/******************************************************************
+Stylesheet: Utils Mixin
+******************************************************************/
+@mixin addShadowBox($color){
+  -webkit-box-shadow: 0px 0px 5px 2px $color;
+  -moz-box-shadow: 0px 0px 5px 2px $color;
+  box-shadow: 0px 0px 5px 2px $color;
+}

@@ -63,6 +63,7 @@ Stylesheet: Header
 
 .header {
 	position: relative;
+	@include addShadowBox(darken(#e2dbc2,40%));
 
 	// Header Text
 	a, p, h1
