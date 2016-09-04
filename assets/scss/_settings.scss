@@ -191,7 +191,7 @@ $input-error-font-size: rem-calc(12);
 $input-error-font-weight: $global-weight-bold;
 
 // 7. Accordion
-// ------------
+// ------------'Hind', sans-serif;
 
 $accordion-background: $white;
 $accordion-plusminus: true;
@@ -397,7 +397,7 @@ $meter-fill-bad: $alert-color;
 // --------------
 
 $offcanvas-size: 250px;
-$offcanvas-background: $light-gray;
+$offcanvas-background: transparent;
 $offcanvas-zindex: -1;
 $offcanvas-transition-length: 0.5s;
 $offcanvas-transition-timing: ease;
